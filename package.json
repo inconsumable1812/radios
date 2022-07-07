@@ -1,7 +1,21 @@
 {
-  "name": "radios_new",
-  "version": "0.1.0",
+  "name": "radios",
+  "version": "1.0.0",
   "private": true,
+  "contributors": [
+    "Kirill Lanskikh <inconsumable1812@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/inconsumable1812/radios",
+  "description": "Test project",
+  "keywords": [
+    "frontend",
+    "typescript",
+    "NextJS",
+    "Redux",
+    "Radio",
+    "Test project"
+  ],
   "scripts": {
     "dev": "open-cli http://localhost:3000 && next dev",
     "build": "next build",
@@ -29,6 +43,7 @@
   },
   "prettier": "./configs/prettier/prettier.config.js",
   "dependencies": {
+    "@heroicons/react": "^1.0.6",
     "next": "12.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
@@ -46,6 +61,7 @@
     "eslint-config-react-app": "^7.0.1",
     "open-cli": "^7.0.1",
     "postcss": "^8.4.14",
+    "sass": "^1.53.0",
     "stylelint": "^14.9.1",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^26.0.0",
