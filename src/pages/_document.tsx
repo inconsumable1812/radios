@@ -6,7 +6,6 @@ class CustomDocument extends Document {
       <Html lang="ru">
         <Head>
           <meta charSet="utf-8" key="charset" />
-          <meta name="viewport" content="initial-scale=1, width=device-width" />
           <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -30,7 +29,7 @@ class CustomDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
           <meta name="copyright" content="inconsumable" />
         </Head>
-        <body>
+        <body className="bg-gradient-to-t from-mainGradient to-white">
           <Main />
           <NextScript />
         </body>

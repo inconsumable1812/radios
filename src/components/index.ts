@@ -1,3 +1,4 @@
 import { MatrixButton } from './MatrixButton/MatrixButton';
+import { PageHead } from './PageHead/PageHead';
 
-export { MatrixButton };
+export { MatrixButton, PageHead };

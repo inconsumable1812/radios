@@ -1,22 +1,22 @@
 type Country =
-  | 'testing'
-  | 'local radio'
-  | 'russia'
-  | 'US'
-  | 'germany'
-  | 'latvija'
-  | 'belorussia';
+  | 'Testing'
+  | 'Local Radio'
+  | 'Russia'
+  | 'United States'
+  | 'Germany'
+  | 'Latvija'
+  | 'Belorussia';
 
 type Genre =
-  | 'pop'
-  | 'adult pop'
-  | 'power pop'
-  | 'dance'
-  | 'electro'
-  | 'hip-hop'
+  | 'Pop'
+  | 'Adult Pop'
+  | 'Power Pop'
+  | 'Dance'
+  | 'Electro'
+  | 'Hip-Hop'
   | 'r&b soul'
-  | 'rock'
-  | 'chanson';
+  | 'Rock'
+  | 'Chanson';
 
 type RadioStations = {
   id: number;
@@ -26,4 +26,15 @@ type RadioStations = {
   img: string;
 }[];
 
-export type { RadioStations };
+type Genres = {
+  id: number;
+  name: Genre;
+}[];
+
+type Countries = {
+  id: number;
+  name: Country;
+  img?: string;
+}[];
+
+export type { RadioStations, Genres, Countries };
