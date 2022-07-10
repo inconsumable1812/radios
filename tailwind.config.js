@@ -8,6 +8,8 @@ module.exports = {
         white: '#ffffff',
         brandOrange: '#f97537',
         brandBlue: '#0C91D8',
+        activeButton: '#FCA42A',
+        activeRadioButton: '#008344',
       },
       spacing: {
         3.5: '0.875rem',
@@ -32,6 +34,12 @@ module.exports = {
         0.5: '0.5px',
       },
       fontSize: {
+        currentRadioCaption: [
+          '8px',
+          {
+            lineHeight: '9px',
+          },
+        ],
         flagCaption: [
           '9px',
           {

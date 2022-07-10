@@ -6,6 +6,7 @@ import { selectData } from './selectors';
 import { getCountries } from './thunks/getCountries';
 import { getGenres } from './thunks/getGenres';
 import { getRadioStations } from './thunks/getRadioStations';
+import { filterRadio } from './utils/filterRadio';
 
 const slice = createSlice({
   name: 'Data',
@@ -13,6 +14,48 @@ const slice = createSlice({
   reducers: {
     changeFilteredStations(state, action) {
       state.filteredRadioStations = action.payload;
+    },
+    changeSearchValue(state, action) {
+      state.searchValue = action.payload;
+
+      state.filteredRadioStations = filterRadio({
+        allRadioStation: state.allRadioStation,
+        chosenCountry: state.chosenCountry,
+        chosenGenre: state.chosenGenre,
+        searchValue: state.searchValue,
+      });
+    },
+    choseCurrentRadio(state, action) {
+      state.currentRadioPlay = action.payload;
+    },
+    changeIsPlay(state, action) {
+      state.isPlay = action.payload;
+    },
+    changeIsLoadingRadioStation(state, action) {
+      state.isLoadingRadioStations = action.payload;
+    },
+    choseGenre(state, action) {
+      state.chosenGenre = action.payload;
+
+      state.filteredRadioStations = filterRadio({
+        allRadioStation: state.allRadioStation,
+        chosenCountry: state.chosenCountry,
+        chosenGenre: state.chosenGenre,
+        searchValue: state.searchValue,
+      });
+    },
+    choseCountry(state, action) {
+      state.chosenCountry = action.payload;
+
+      state.filteredRadioStations = filterRadio({
+        allRadioStation: state.allRadioStation,
+        chosenCountry: state.chosenCountry,
+        chosenGenre: state.chosenGenre,
+        searchValue: state.searchValue,
+      });
+    },
+    changeVolume(state, action) {
+      state.volume = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -63,7 +106,16 @@ const slice = createSlice({
   },
 });
 
-const { changeFilteredStations } = slice.actions;
+const {
+  changeFilteredStations,
+  changeSearchValue,
+  choseCurrentRadio,
+  choseGenre,
+  choseCountry,
+  changeIsPlay,
+  changeIsLoadingRadioStation,
+  changeVolume,
+} = slice.actions;
 
 const { reducer } = slice;
 
@@ -74,4 +126,11 @@ export {
   getRadioStations,
   getGenres,
   getCountries,
+  changeSearchValue,
+  choseCurrentRadio,
+  changeIsPlay,
+  choseGenre,
+  choseCountry,
+  changeIsLoadingRadioStation,
+  changeVolume,
 };

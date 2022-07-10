@@ -7,6 +7,13 @@ const initialState: State = {
   filteredRadioStations: [],
   genres: [],
   countries: [],
+  currentRadioPlay: null,
+  searchValue: '',
+  isPlay: false,
+  isLoadingRadioStations: false,
+  chosenGenre: null,
+  chosenCountry: null,
+  volume: '60',
 };
 
 export { initialState };

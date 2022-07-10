@@ -11,7 +11,8 @@ type Props = {};
 
 const Radios: FC<Props> = ({}) => {
   const dispatch = useAppDispatch();
-  const { status, error } = useAppSelector(selectData);
+  const { status, error, isPlay, currentRadioPlay, isLoadingRadioStations } =
+    useAppSelector(selectData);
 
   useEffect(() => {
     dispatch(getRadioStations());
@@ -26,7 +27,19 @@ const Radios: FC<Props> = ({}) => {
       return (
         <>
           <Header></Header>
-          <main>
+          <main className="mx-2">
+            <div className="my-2 min-h-[16px] self-end">
+              {isLoadingRadioStations && (
+                <p className="text-right text-currentRadioCaption md:text-xs">
+                  Подождите, радио {currentRadioPlay?.name} загружается...
+                </p>
+              )}
+              {isPlay && (
+                <p className="text-right text-currentRadioCaption md:text-xs">
+                  Вы слушаете {currentRadioPlay?.name}
+                </p>
+              )}
+            </div>
             <Container></Container>
           </main>
         </>

@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from 'src/app/hooks';
 import {
   BurgerIcon,
   CancelIcon,
@@ -8,20 +9,20 @@ import {
   SearchIcon,
   SkipIcon,
   UnionIcon,
-  Input,
+  ButtonIcon,
 } from 'src/components';
+import { changeSearchValue, selectData } from 'src/features/Radios/redux/slice';
+import { Input } from '../Input/Input';
+import { Slider } from '../Slider/Slider';
 
 type Props = {};
 
 const Header: FC<Props> = ({}) => {
-  const [isPlay, setIsPlay] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
   const [isDesktop, setIsDesktop] = useState(false);
 
-  const HandleChangeSearchValue = (value: string) => {
-    setSearchValue(value);
-  };
+  const dispatch = useAppDispatch();
+  const { searchValue, isPlay } = useAppSelector(selectData);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -37,11 +38,23 @@ const Header: FC<Props> = ({}) => {
     }
   }, []);
 
+  const handleDesktopSearchClick = () => {
+    dispatch(changeSearchValue(''));
+  };
+
+  const handleCancelClick = () => {
+    dispatch(changeSearchValue(''));
+    setIsSearching(false);
+  };
+  const handleSearchClick = () => {
+    setIsSearching(true);
+  };
+
   switch (isDesktop) {
     case true:
       return (
-        <header className="my-2 mx-5">
-          <div className="flex items-center justify-between">
+        <header className="flex items-center mx-5 min-h-[55px]">
+          <div className="flex items-center justify-between w-full">
             <BurgerIcon></BurgerIcon>
             {isPlay && (
               <div className="flex items-center gap-x-5">
@@ -50,12 +63,13 @@ const Header: FC<Props> = ({}) => {
                 <DislikeIcon></DislikeIcon>
                 <SkipIcon></SkipIcon>
                 <UnionIcon></UnionIcon>
+                <Slider></Slider>
               </div>
             )}
             <div className="flex items-center gap-x-2">
               <Input></Input>
-              {isSearching ? (
-                <CancelIcon></CancelIcon>
+              {searchValue.trim().length !== 0 ? (
+                <CancelIcon onClick={handleDesktopSearchClick}></CancelIcon>
               ) : (
                 <SearchIcon></SearchIcon>
               )}
@@ -66,10 +80,10 @@ const Header: FC<Props> = ({}) => {
 
     default:
       return (
-        <header className="my-2 mx-5">
-          <div className="flex items-center justify-between">
+        <header className="flex items-center mx-5 min-h-[55px]">
+          <div className="flex items-center justify-between w-full">
             <BurgerIcon></BurgerIcon>
-            {!isSearching && (
+            {isPlay && (
               <>
                 <LikeIcon></LikeIcon>
                 <PlayIcon></PlayIcon>
@@ -80,9 +94,9 @@ const Header: FC<Props> = ({}) => {
             )}
             {isSearching && <Input></Input>}
             {isSearching ? (
-              <CancelIcon></CancelIcon>
+              <CancelIcon onClick={handleCancelClick}></CancelIcon>
             ) : (
-              <SearchIcon></SearchIcon>
+              <SearchIcon onClick={handleSearchClick}></SearchIcon>
             )}
           </div>
         </header>

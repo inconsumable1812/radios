@@ -24,6 +24,7 @@ type RadioStation = {
   genre: GenreNames;
   country: CountryNames;
   img: string;
+  src: string;
 };
 
 type Genre = {
@@ -37,4 +38,4 @@ type Country = {
   img?: string;
 };
 
-export type { RadioStation, Genre, Country };
+export type { RadioStation, Genre, Country, GenreNames, CountryNames };

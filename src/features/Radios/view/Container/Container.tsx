@@ -1,6 +1,5 @@
 import { FC } from 'react';
 
-import { MatrixButton, PageHead } from 'src/components';
 import styles from './Container.module.scss';
 
 import { useAppSelector } from 'src/app/hooks';
@@ -24,7 +23,7 @@ const Container: FC<Props> = ({}) => {
         <MyBestButton></MyBestButton>
       </div>
       <div
-        className={`grid ${styles.genres} overflow-auto h-[64px] md:h-[84px]`}
+        className={`grid ${styles.genres} overflow-auto h-[64px] md:h-[84px] pl-1.5`}
       >
         <div className={`flex gap-3.5 md:gap-3.75 xl:gap-3 `}>
           {genres.map((genre) => (
@@ -33,7 +32,7 @@ const Container: FC<Props> = ({}) => {
         </div>
       </div>
       <div
-        className={`grid ${styles.countries} overflow-auto w-[64px] md:w-[84px]`}
+        className={`grid ${styles.countries} pt-1.5 overflow-auto w-[64px] md:w-[84px]`}
       >
         <div className={`flex flex-col gap-3.5 md:gap-3.75 xl:gap-3 `}>
           {countries.map((country) => (
@@ -46,13 +45,15 @@ const Container: FC<Props> = ({}) => {
         </div>
       </div>
       <div
-        className={`grid grid-cols-autoFill grid-rows-autoFill gap-3.5 md:grid-cols-autoFillMd md:grid-rows-autoFillMd md:gap-3.75 xl:gap-3 overflow-auto ${styles.radios}`}
+        className={`grid grid-cols-autoFill grid-rows-autoFill gap-3.5 md:grid-cols-autoFillMd md:grid-rows-autoFillMd md:gap-3.75 xl:gap-3 overflow-auto pl-1.5 pt-1.5 ${styles.radios}`}
       >
         {filteredRadioStations.map((radio) => (
           <RadioButton
             key={radio.id}
+            radio={radio}
             url={radio.img}
             name={radio.name}
+            src={radio.src}
           ></RadioButton>
         ))}
       </div>

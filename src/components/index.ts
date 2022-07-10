@@ -1,6 +1,7 @@
 import { MatrixButton } from './MatrixButton/MatrixButton';
 import { PageHead } from './PageHead/PageHead';
-import { Input } from './Input/Input';
+import { ButtonIcon } from './ButtonIcon/ButtonIcon';
+
 import {
   BurgerIcon,
   LikeIcon,
@@ -25,5 +26,5 @@ export {
   CancelIcon,
   SearchIcon,
   DislikeIcon,
-  Input,
+  ButtonIcon,
 };
