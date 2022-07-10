@@ -1,0 +1,29 @@
+.template {
+  grid-template:
+    'best genres' 60px
+    'countries radios' 1fr
+    / 60px 1fr;
+
+  @media (min-width: 768px) {
+    grid-template:
+      'best genres' 80px
+      'countries radios' 1fr
+      / 80px 1fr;
+  }
+}
+
+.best {
+  grid-area: best;
+}
+
+.genres {
+  grid-area: genres;
+}
+
+.countries {
+  grid-area: countries;
+}
+
+.radios {
+  grid-area: radios;
+}

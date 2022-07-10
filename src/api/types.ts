@@ -1,4 +1,4 @@
-type Country =
+type CountryNames =
   | 'Testing'
   | 'Local Radio'
   | 'Russia'
@@ -7,7 +7,7 @@ type Country =
   | 'Latvija'
   | 'Belorussia';
 
-type Genre =
+type GenreNames =
   | 'Pop'
   | 'Adult Pop'
   | 'Power Pop'
@@ -18,23 +18,23 @@ type Genre =
   | 'Rock'
   | 'Chanson';
 
-type RadioStations = {
+type RadioStation = {
   id: number;
   name: string;
-  genre: Genre;
-  country: Country;
+  genre: GenreNames;
+  country: CountryNames;
   img: string;
-}[];
+};
 
-type Genres = {
+type Genre = {
   id: number;
-  name: Genre;
-}[];
+  name: GenreNames;
+};
 
-type Countries = {
+type Country = {
   id: number;
-  name: Country;
+  name: CountryNames;
   img?: string;
-}[];
+};
 
-export type { RadioStations, Genres, Countries };
+export type { RadioStation, Genre, Country };

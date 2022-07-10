@@ -1,17 +1,22 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { FC } from 'react';
+
+import { wrapper } from 'src/app/store';
 
 import '../styles/globals.scss';
 
-function MyApp({ Component, pageProps }: AppProps) {
+const CustomApp: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <Component {...pageProps} />
+      <Component {...pageProps} />{' '}
     </>
   );
-}
+};
 
-export default MyApp;
+const WrappedCustomApp = wrapper.withRedux(CustomApp);
+
+export default WrappedCustomApp;

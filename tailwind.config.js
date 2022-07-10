@@ -7,6 +7,7 @@ module.exports = {
         mainGradient: '#e7e7e7',
         white: '#ffffff',
         brandOrange: '#f97537',
+        brandBlue: '#0C91D8',
       },
       spacing: {
         3.5: '0.875rem',
@@ -14,8 +15,12 @@ module.exports = {
         15: '3.75rem',
       },
       gridTemplateColumns: {
-        autoFill: 'repeat(auto-fill, minmax(60px, 1fr))',
-        autoFillMd: 'repeat(auto-fill, minmax(80px, 1fr))',
+        autoFill: 'repeat(auto-fill, 60px)',
+        autoFillMd: 'repeat(auto-fill, 80px)',
+      },
+      gridTemplateRows: {
+        autoFill: 'repeat(auto-fill, 60px)',
+        autoFillMd: 'repeat(auto-fill, 80px)',
       },
       boxShadow: {
         matrix: '0px 4px 4px rgba(0, 0, 0, 0.25)',
