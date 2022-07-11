@@ -17,4 +17,4 @@ Functional:
 
 ## Demo
 
-[demo](https://radios-d93mst6tq-inconsumable1812.vercel.app/)
+[demo](https://radios-gamma.vercel.app/)
