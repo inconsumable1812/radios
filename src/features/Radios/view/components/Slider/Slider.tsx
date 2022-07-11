@@ -1,4 +1,4 @@
-import { FC, SyntheticEvent, useState } from 'react';
+import { FC, SyntheticEvent } from 'react';
 import { useAppDispatch, useAppSelector } from 'src/app/hooks';
 import { changeVolume, selectData } from 'src/features/Radios/redux/slice';
 
@@ -14,7 +14,7 @@ const Slider: FC<Props> = () => {
 
   return (
     <input
-      className="w-16"
+      className="w-16 cursor-pointer"
       type="range"
       value={volume}
       onChange={handleChangeValue}

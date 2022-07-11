@@ -1,65 +1,40 @@
 import Image from 'next/image';
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC } from 'react';
 import { RadioStation } from 'src/api';
 import { useAppDispatch, useAppSelector } from 'src/app/hooks';
 import { MatrixButton } from 'src/components';
-import {
-  changeIsLoadingRadioStation,
-  changeIsPlay,
-  choseCurrentRadio,
-  selectData,
-} from 'src/features/Radios/redux/slice';
+import { choseCurrentRadio, selectData } from 'src/features/Radios/redux/slice';
 
 type Props = {
   url: string;
   name: string;
   radio: RadioStation;
-  src: string;
 };
 
-const RadioButton: FC<Props> = ({ url, name, radio, src }) => {
-  const [isClicked, setIsClicked] = useState(false);
-  const audioContainer = useRef<HTMLAudioElement>(null);
-
+const RadioButton: FC<Props> = ({ url, name, radio }) => {
   const dispatch = useAppDispatch();
-  const { volume } = useAppSelector(selectData);
-  const style = isClicked
+  const { chosenRadio } = useAppSelector(selectData);
+
+  const isCurrent = chosenRadio?.id === radio.id;
+
+  const style = isCurrent
     ? 'outline-[6px] outline outline-activeRadioButton'
     : 'outline-0';
 
   const handleClick = () => {
-    setIsClicked((prev) => !prev);
-  };
-
-  useEffect(() => {
-    if (isClicked) {
+    if (!isCurrent) {
       dispatch(choseCurrentRadio(radio));
-      if (audioContainer.current !== null) {
-        audioContainer.current.play().then(() => {
-          dispatch(changeIsPlay(true));
-          dispatch(changeIsLoadingRadioStation(false));
-        });
-        audioContainer.current.volume = +volume / 100;
-        dispatch(changeIsLoadingRadioStation(true));
+      if (localStorage.getItem(radio.id.toString()) === null) {
+        localStorage.setItem(radio.id.toString(), JSON.stringify(radio));
       }
     } else {
-      dispatch(changeIsPlay(false));
       dispatch(choseCurrentRadio(null));
-      if (audioContainer.current !== null) {
-        audioContainer.current.pause();
-      }
     }
-  }, [isClicked]);
-
-  useEffect(() => {
-    if (audioContainer.current !== null) {
-      audioContainer.current.volume = +volume / 100;
-    }
-  }, [volume]);
+  };
 
   return (
     <MatrixButton onClick={handleClick}>
-      <div className={`rounded-matrix ${style} `}>
+      <div className={`rounded-matrix ${style}`}>
         <Image
           className="rounded-matrix"
           src={url}
@@ -69,7 +44,6 @@ const RadioButton: FC<Props> = ({ url, name, radio, src }) => {
           width="10"
         ></Image>
       </div>
-      <audio ref={audioContainer} src={src}></audio>
     </MatrixButton>
   );
 };

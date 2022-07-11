@@ -12,13 +12,15 @@ type State = {
   error: string | null;
   allRadioStation: RadioStation[];
   filteredRadioStations: RadioStation[];
+  bestRadioStations: RadioStation[];
+  isShowBestRadio: boolean;
   genres: Genre[];
   countries: Country[];
   searchValue: string;
-  currentRadioPlay: RadioStation | null;
-  isPlay: boolean;
+  chosenRadio: RadioStation | null;
   chosenGenre: GenreNames | null;
   chosenCountry: CountryNames | null;
+  isPlay: boolean;
   isLoadingRadioStations: boolean;
   volume: string;
 };

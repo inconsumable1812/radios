@@ -10,10 +10,12 @@ module.exports = {
         brandBlue: '#0C91D8',
         activeButton: '#FCA42A',
         activeRadioButton: '#008344',
+        filteredRadio: '#FFE0B6',
       },
       spacing: {
         3.5: '0.875rem',
         3.75: '0.9375rem',
+        8.5: '2.125rem',
         15: '3.75rem',
       },
       gridTemplateColumns: {

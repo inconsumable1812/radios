@@ -7,6 +7,7 @@ import { PlayIcon } from './PlayIcon/PlayIcon';
 import { SearchIcon } from './SearchIcon/SearchIcon';
 import { SkipIcon } from './SkipIcon/SkipIcon';
 import { UnionIcon } from './UnionIcon/UnionIcon';
+import { ArrowIcon } from './ArrowIcon/ArrowIcon';
 
 export {
   BurgerIcon,
@@ -18,4 +19,5 @@ export {
   SearchIcon,
   SkipIcon,
   UnionIcon,
+  ArrowIcon,
 };

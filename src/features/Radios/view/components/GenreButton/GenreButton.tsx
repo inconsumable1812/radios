@@ -1,32 +1,29 @@
-import { FC, useEffect, useState } from 'react';
-import { useAppDispatch } from 'src/app/hooks';
+import { FC } from 'react';
+import { useAppDispatch, useAppSelector } from 'src/app/hooks';
 import { MatrixButton } from 'src/components';
-import { choseGenre } from 'src/features/Radios/redux/slice';
+import { choseGenre, selectData } from 'src/features/Radios/redux/slice';
 
 type Props = {
   name: string;
 };
 
 const GenreButton: FC<Props> = ({ name }) => {
-  const [isClicked, setIsClicked] = useState(false);
-
   const dispatch = useAppDispatch();
+  const { chosenGenre } = useAppSelector(selectData);
 
-  const style = isClicked
+  const isCurrent = chosenGenre === name;
+
+  const style = isCurrent
     ? 'bg-activeButton border-activeButton text-white'
     : 'bg-transparent border-neutral-200 text-black';
 
   const handleClick = () => {
-    setIsClicked((prev) => !prev);
-  };
-
-  useEffect(() => {
-    if (isClicked) {
+    if (!isCurrent) {
       dispatch(choseGenre(name));
     } else {
       dispatch(choseGenre(null));
     }
-  }, [isClicked]);
+  };
 
   return (
     <MatrixButton onClick={handleClick}>

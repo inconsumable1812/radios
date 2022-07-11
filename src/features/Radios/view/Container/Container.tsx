@@ -1,61 +1,46 @@
 import { FC } from 'react';
 
 import styles from './Container.module.scss';
-
 import { useAppSelector } from 'src/app/hooks';
 import { selectData } from '../../redux/slice';
-import {
-  MyBestButton,
-  RadioButton,
-  GenreButton,
-  CountryButton,
-} from '../components';
+import { MyBestButton } from '../components';
+import { GenreContainer } from '../components/GenreContainer/GenreContainer';
+import { CountryContainer } from '../components/CountryContainer/CountryContainer';
+import { RadioContainer } from '../components/RadioContainer/RadioContainer';
 
 type Props = {};
 
 const Container: FC<Props> = ({}) => {
-  const { filteredRadioStations, countries, genres } =
+  const { filteredRadioStations, countries, genres, allRadioStation } =
     useAppSelector(selectData);
 
+  const radioBackground =
+    allRadioStation.length !== filteredRadioStations.length
+      ? 'bg-filteredRadio'
+      : 'bg-transparent';
+
   return (
-    <div className={`grid ${styles.template} gap-3.5 md:gap-3.75 xl:gap-3`}>
+    <div
+      className={`grid ${styles.template} gap-3.5 md:gap-3.75 xl:gap-3 pl-0.5 ml[-0.125rem]`}
+    >
       <div className={`grid ${styles.best}`}>
         <MyBestButton></MyBestButton>
       </div>
       <div
-        className={`grid ${styles.genres} overflow-auto h-[64px] md:h-[84px] pl-1.5`}
+        className={`grid ${styles.genres} h-[64px] md:h-[86px] px-4 mx-[-1rem] relative`}
       >
-        <div className={`flex gap-3.5 md:gap-3.75 xl:gap-3 `}>
-          {genres.map((genre) => (
-            <GenreButton key={genre.id} name={genre.name}></GenreButton>
-          ))}
-        </div>
+        <GenreContainer genres={genres}></GenreContainer>
       </div>
       <div
-        className={`grid ${styles.countries} pt-1.5 overflow-auto w-[64px] md:w-[84px]`}
+        className={`grid ${styles.countries} pb-10 pt-4 mt-[-1rem] w-[64px] md:w-[84px] pl-0.5 ml[-0.125rem]`}
       >
-        <div className={`flex flex-col gap-3.5 md:gap-3.75 xl:gap-3 `}>
-          {countries.map((country) => (
-            <CountryButton
-              key={country.id}
-              url={country.img}
-              name={country.name}
-            ></CountryButton>
-          ))}
-        </div>
+        <CountryContainer countries={countries}></CountryContainer>
       </div>
-      <div
-        className={`grid grid-cols-autoFill grid-rows-autoFill gap-3.5 md:grid-cols-autoFillMd md:grid-rows-autoFillMd md:gap-3.75 xl:gap-3 overflow-auto pl-1.5 pt-1.5 ${styles.radios}`}
-      >
-        {filteredRadioStations.map((radio) => (
-          <RadioButton
-            key={radio.id}
-            radio={radio}
-            url={radio.img}
-            name={radio.name}
-            src={radio.src}
-          ></RadioButton>
-        ))}
+      <div className={`grid  ${styles.radios} `}>
+        <RadioContainer
+          radioStations={filteredRadioStations}
+          radioBackground={radioBackground}
+        ></RadioContainer>
       </div>
     </div>
   );

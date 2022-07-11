@@ -12,6 +12,7 @@ import {
   CancelIcon,
   SearchIcon,
   DislikeIcon,
+  ArrowIcon,
 } from './Icon';
 
 export {
@@ -27,4 +28,5 @@ export {
   SearchIcon,
   DislikeIcon,
   ButtonIcon,
+  ArrowIcon,
 };

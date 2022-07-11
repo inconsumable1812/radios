@@ -15,6 +15,12 @@ const slice = createSlice({
     changeFilteredStations(state, action) {
       state.filteredRadioStations = action.payload;
     },
+    changeBestRadioStations(state, action) {
+      state.bestRadioStations = action.payload;
+    },
+    changeIsShowBestRadio(state, action) {
+      state.isShowBestRadio = action.payload;
+    },
     changeSearchValue(state, action) {
       state.searchValue = action.payload;
 
@@ -23,10 +29,12 @@ const slice = createSlice({
         chosenCountry: state.chosenCountry,
         chosenGenre: state.chosenGenre,
         searchValue: state.searchValue,
+        isShowBestRadio: state.isShowBestRadio,
+        bestRadioStations: state.bestRadioStations,
       });
     },
     choseCurrentRadio(state, action) {
-      state.currentRadioPlay = action.payload;
+      state.chosenRadio = action.payload;
     },
     changeIsPlay(state, action) {
       state.isPlay = action.payload;
@@ -42,6 +50,8 @@ const slice = createSlice({
         chosenCountry: state.chosenCountry,
         chosenGenre: state.chosenGenre,
         searchValue: state.searchValue,
+        isShowBestRadio: state.isShowBestRadio,
+        bestRadioStations: state.bestRadioStations,
       });
     },
     choseCountry(state, action) {
@@ -52,6 +62,8 @@ const slice = createSlice({
         chosenCountry: state.chosenCountry,
         chosenGenre: state.chosenGenre,
         searchValue: state.searchValue,
+        isShowBestRadio: state.isShowBestRadio,
+        bestRadioStations: state.bestRadioStations,
       });
     },
     changeVolume(state, action) {
@@ -115,6 +127,8 @@ const {
   changeIsPlay,
   changeIsLoadingRadioStation,
   changeVolume,
+  changeBestRadioStations,
+  changeIsShowBestRadio,
 } = slice.actions;
 
 const { reducer } = slice;
@@ -133,4 +147,6 @@ export {
   choseCountry,
   changeIsLoadingRadioStation,
   changeVolume,
+  changeBestRadioStations,
+  changeIsShowBestRadio,
 };
