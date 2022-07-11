@@ -7,7 +7,7 @@ const radioStations: RadioStation[] = [
     genre: 'Adult Pop',
     country: 'United States',
     img: '/img/living-sound-instrumental.png',
-    src: 'http://213.21.4.49:8014/',
+    src: 'https://str.pcradio.ru/Instrumental_fm-hi',
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const radioStations: RadioStation[] = [
     genre: 'Dance',
     country: 'Germany',
     img: '/img/dance-fm.png',
-    src: 'http://ice.actve.net/dance-radio128.mp3',
+    src: 'https://secureonair.krone.at/kronehit23.mp3',
   },
   {
     id: 4,
@@ -31,7 +31,7 @@ const radioStations: RadioStation[] = [
     genre: 'Hip-Hop',
     country: 'Russia',
     img: '/img/europa-plus.png',
-    src: 'http://emgregion.hostingradio.ru:8064/moscow.europaplus.mp3',
+    src: 'https://emgregion.hostingradio.ru:8064/moscow.europaplus.mp3',
   },
   {
     id: 5,
@@ -39,7 +39,7 @@ const radioStations: RadioStation[] = [
     genre: 'Hip-Hop',
     country: 'United States',
     img: '/img/hip-hop-music.png',
-    src: 'http://stream.europeanhitradio.com:8000/Stream_11.mp3',
+    src: 'https://stream.europeanhitradio.com:8000/Stream_11.mp3',
   },
   {
     id: 6,
@@ -71,7 +71,7 @@ const radioStations: RadioStation[] = [
     genre: 'Electro',
     country: 'Russia',
     img: '/img/maximum-fm.png',
-    src: 'http://maximum.hostingradio.ru/maximum128.mp3',
+    src: 'https://maximum.hostingradio.ru/maximum128.mp3',
   },
   {
     id: 10,
@@ -87,7 +87,7 @@ const radioStations: RadioStation[] = [
     genre: 'Chanson',
     country: 'Belorussia',
     img: '/img/pilot-fm.png',
-    src: 'http://stream.hoster.by/pilotfm/pilot_hd/icecast.audio',
+    src: 'https://stream.hoster.by/pilotfm/pilot_hd/icecast.audio',
   },
   {
     id: 12,
@@ -103,7 +103,7 @@ const radioStations: RadioStation[] = [
     genre: 'Power Pop',
     country: 'Russia',
     img: '/img/radio-7.png',
-    src: 'http://retroserver.streamr.ru:8040/radio7_happiness64.aacp',
+    src: 'https://str.pcradio.ru/radio7_ru-hi',
   },
   {
     id: 14,
@@ -119,7 +119,7 @@ const radioStations: RadioStation[] = [
     genre: 'Dance',
     country: 'Russia',
     img: '/img/record.png',
-    src: 'http://23.111.104.132:9010/rr_main',
+    src: 'https://online-1.gkvr.ru:8000/rr128_com_reg.aac',
   },
   {
     id: 16,
@@ -135,7 +135,7 @@ const radioStations: RadioStation[] = [
     genre: 'Chanson',
     country: 'Russia',
     img: '/img/road-fm.png',
-    src: 'http://emgregion.hostingradio.ru:8064/moscow.dorognoe.mp3',
+    src: 'https://emgregion.hostingradio.ru:8064/moscow.dorognoe.mp3',
   },
   {
     id: 18,
@@ -143,7 +143,7 @@ const radioStations: RadioStation[] = [
     genre: 'Rock',
     country: 'Germany',
     img: '/img/time.png',
-    src: 'http://prmstrm.1.fm:8000/allmixedup',
+    src: 'https://str.pcradio.ru/housetime_fm-hi',
   },
   {
     id: 19,
@@ -151,7 +151,7 @@ const radioStations: RadioStation[] = [
     genre: 'r&b soul',
     country: 'Germany',
     img: '/img/velena.png',
-    src: 'http://stream.virginradio.fr:8000/vr-wr8.mp3',
+    src: 'https://radio.virginradio.co.uk/stream',
   },
   {
     id: 20,
@@ -159,23 +159,23 @@ const radioStations: RadioStation[] = [
     genre: 'Hip-Hop',
     country: 'Russia',
     img: '/img/wake-me-up.png',
-    src: 'http://rusradio.hostingradio.ru/rusradio128.mp3',
+    src: 'https://rusradio.hostingradio.ru/rusradio128.mp3',
   },
   {
     id: 21,
     name: 'yo fm',
     genre: 'r&b soul',
-    country: 'Russia',
+    country: 'Germany',
     img: '/img/yo-fm.png',
-    src: 'http://radio.promodj.com:8000/yo-192',
+    src: 'https://str.pcradio.ru/bayern_fresh4u-hi',
   },
   {
     id: 22,
-    name: 'Авторадио_Иркутск',
+    name: 'Авторадио',
     genre: 'Power Pop',
     country: 'Russia',
     img: '/img/avtoradio.png',
-    src: 'http://live.nts-tv.ru:8000/AvtoRadioV',
+    src: 'https://str.pcradio.ru/avtoradio-hi',
   },
 ];
 
