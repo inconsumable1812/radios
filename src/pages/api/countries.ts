@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { countries, Countries } from 'src/api';
+import { countries, Country } from 'src/api';
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Countries>
+  res: NextApiResponse<Country[]>
 ) {
   res.status(200).json(countries);
 }
