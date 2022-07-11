@@ -3,10 +3,12 @@ import { FC } from 'react';
 import styles from './Container.module.scss';
 import { useAppSelector } from 'src/app/hooks';
 import { selectData } from '../../redux/slice';
-import { MyBestButton } from '../components';
-import { GenreContainer } from '../components/GenreContainer/GenreContainer';
-import { CountryContainer } from '../components/CountryContainer/CountryContainer';
-import { RadioContainer } from '../components/RadioContainer/RadioContainer';
+import {
+  MyBestButton,
+  GenreContainer,
+  CountryContainer,
+  RadioContainer,
+} from '../components';
 
 type Props = {};
 

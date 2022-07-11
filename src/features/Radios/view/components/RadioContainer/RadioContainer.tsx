@@ -48,17 +48,21 @@ const RadioContainer: FC<Props> = ({ radioStations, radioBackground }) => {
 
   return (
     <div
-      style={{ height: `${calculatedHeight.toString()}px` }}
-      className={`grid grid-cols-autoFill grid-rows-autoFill gap-3.5 md:grid-cols-autoFillMd md:grid-rows-autoFillMd md:gap-3.75 xl:gap-3 overflow-auto pl-1.5 ml-[-0.375rem] py-1.5 mt-[-0.375rem] ${radioBackground} rounded-matrix`}
+      style={{ maxHeight: `${calculatedHeight.toString()}px` }}
+      className={`grid grid-cols-autoFill grid-rows-autoFill gap-3.5 md:grid-cols-autoFillMd md:grid-rows-autoFillMd md:gap-3.75 xl:gap-3 overflow-auto pl-1.5 ml-[-0.375rem] py-1.5 mt-[-0.375rem] ${radioBackground} rounded-matrix h-fit relative`}
     >
-      {radioStations.map((radio) => (
-        <RadioButton
-          key={radio.id}
-          radio={radio}
-          url={radio.img}
-          name={radio.name}
-        ></RadioButton>
-      ))}
+      {radioStations.length === 0 ? (
+        <p className="absolute top-5 left-2">Радиостанции не найдены</p>
+      ) : (
+        radioStations.map((radio) => (
+          <RadioButton
+            key={radio.id}
+            radio={radio}
+            url={radio.img}
+            name={radio.name}
+          ></RadioButton>
+        ))
+      )}
     </div>
   );
 };
