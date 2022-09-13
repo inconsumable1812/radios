@@ -1,6 +1,7 @@
 import { FC, useEffect, useRef } from 'react';
 
 import { useAppSelector, useAppDispatch } from 'src/app/hooks';
+import { Loader } from 'src/components';
 import { REQUEST_STATUS } from 'src/helpers/redux';
 import { selectData } from './redux/selectors';
 import {
@@ -52,7 +53,11 @@ const Radios: FC<Props> = ({}) => {
 
   switch (status) {
     case REQUEST_STATUS.pending:
-      return <p>Loading...</p>;
+      return (
+        <div className="flex h-full items-center justify-center">
+          <Loader />
+        </div>
+      );
     case REQUEST_STATUS.fulfilled:
       return (
         <>
