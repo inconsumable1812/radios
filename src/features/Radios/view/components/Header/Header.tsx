@@ -58,11 +58,6 @@ const Header: FC<Props> = ({}) => {
             <BurgerIcon></BurgerIcon>
             {isPlay && (
               <div className="flex items-center gap-x-5">
-                <LikeIcon></LikeIcon>
-                <PlayIcon></PlayIcon>
-                <DislikeIcon></DislikeIcon>
-                <SkipIcon></SkipIcon>
-                <UnionIcon></UnionIcon>
                 <Slider></Slider>
               </div>
             )}
