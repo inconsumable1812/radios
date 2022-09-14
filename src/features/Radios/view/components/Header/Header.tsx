@@ -23,7 +23,8 @@ const Header: FC<Props> = ({}) => {
   const [isDesktop, setIsDesktop] = useState(false);
 
   const dispatch = useAppDispatch();
-  const { searchValue, isPlay, isPause } = useAppSelector(selectData);
+  const { searchValue, isPlay, isPause, chosenRadio } =
+    useAppSelector(selectData);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -52,6 +53,7 @@ const Header: FC<Props> = ({}) => {
   };
 
   const handlePauseClick = () => {
+    if (chosenRadio === null) return;
     dispatch(changeIsPause(!isPause));
     if (!isPause) {
       dispatch(changeIsLoadingRadioStation('pause'));
@@ -64,17 +66,16 @@ const Header: FC<Props> = ({}) => {
         <header className="flex items-center mx-5 min-h-[55px]">
           <div className="flex items-center justify-between w-full">
             <BurgerIcon></BurgerIcon>
-            {isPlay && (
-              <div className="flex items-center gap-x-5">
-                <Slider></Slider>
-                <div
-                  className="h-11 w-11 flex items-center justify-center"
-                  onClick={handlePauseClick}
-                >
-                  {isPause ? <PauseIcon></PauseIcon> : <PlayIcon></PlayIcon>}
-                </div>
+            <div className="flex items-center gap-x-5">
+              <Slider></Slider>
+              <div
+                className="h-11 w-11 flex items-center justify-center"
+                onClick={handlePauseClick}
+              >
+                {isPause ? <PauseIcon></PauseIcon> : <PlayIcon></PlayIcon>}
               </div>
-            )}
+            </div>
+
             <div className="flex items-center gap-x-2">
               <Input></Input>
               {searchValue.trim().length !== 0 ? (
@@ -96,9 +97,7 @@ const Header: FC<Props> = ({}) => {
               className="h-11 w-11 flex items-center justify-center"
               onClick={handlePauseClick}
             >
-              {isPlay && (
-                <>{isPause ? <PauseIcon></PauseIcon> : <PlayIcon></PlayIcon>}</>
-              )}
+              <>{isPause ? <PauseIcon></PauseIcon> : <PlayIcon></PlayIcon>}</>
             </div>
             {isSearching && <Input></Input>}
             {isSearching ? (

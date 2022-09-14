@@ -40,7 +40,6 @@ const Radios: FC<Props> = ({}) => {
     if (audioContainer.current === null) return;
     if (chosenRadio !== null) {
       audioContainer.current.play().then(() => {
-        dispatch(changeIsPlay(true));
         dispatch(changeIsLoadingRadioStation('play'));
         dispatch(changeIsPause(false));
       });
@@ -48,7 +47,6 @@ const Radios: FC<Props> = ({}) => {
       dispatch(changeIsLoadingRadioStation('loading'));
     } else {
       dispatch(changeIsLoadingRadioStation('pause'));
-      dispatch(changeIsPlay(false));
       dispatch(changeIsPause(false));
       audioContainer.current.pause();
     }
@@ -98,7 +96,7 @@ const Radios: FC<Props> = ({}) => {
                   Радио {chosenRadio?.name} на паузе
                 </p>
               )}
-              {isPlay && isLoadingRadioStations === 'play' && (
+              {isLoadingRadioStations === 'play' && (
                 <p className="text-right text-currentRadioCaption md:text-xs">
                   Вы слушаете {chosenRadio?.name}
                 </p>
