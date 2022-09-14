@@ -3,13 +3,8 @@ import { useAppDispatch, useAppSelector } from 'src/app/hooks';
 import {
   BurgerIcon,
   CancelIcon,
-  DislikeIcon,
-  LikeIcon,
   PlayIcon,
   SearchIcon,
-  SkipIcon,
-  UnionIcon,
-  ButtonIcon,
   PauseIcon,
 } from 'src/components';
 import {
@@ -72,7 +67,10 @@ const Header: FC<Props> = ({}) => {
             {isPlay && (
               <div className="flex items-center gap-x-5">
                 <Slider></Slider>
-                <div className="h-11 w-11" onClick={handlePauseClick}>
+                <div
+                  className="h-11 w-11 flex items-center justify-center"
+                  onClick={handlePauseClick}
+                >
                   {isPause ? <PauseIcon></PauseIcon> : <PlayIcon></PlayIcon>}
                 </div>
               </div>
@@ -94,7 +92,10 @@ const Header: FC<Props> = ({}) => {
         <header className="flex items-center mx-5 min-h-[55px]">
           <div className="flex items-center justify-between w-full">
             <BurgerIcon></BurgerIcon>
-            <div onClick={handlePauseClick}>
+            <div
+              className="h-11 w-11 flex items-center justify-center"
+              onClick={handlePauseClick}
+            >
               {isPlay && (
                 <>{isPause ? <PauseIcon></PauseIcon> : <PlayIcon></PlayIcon>}</>
               )}

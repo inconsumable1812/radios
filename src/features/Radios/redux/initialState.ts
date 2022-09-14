@@ -15,7 +15,7 @@ const initialState: State = {
   chosenCountry: null,
   isPlay: false,
   isPause: false,
-  isLoadingRadioStations: false,
+  isLoadingRadioStations: 'idle',
   volume: '70',
 };
 

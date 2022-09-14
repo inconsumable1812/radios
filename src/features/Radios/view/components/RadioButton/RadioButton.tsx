@@ -3,7 +3,12 @@ import { FC } from 'react';
 import { RadioStation } from 'src/api';
 import { useAppDispatch, useAppSelector } from 'src/app/hooks';
 import { MatrixButton } from 'src/components';
-import { choseCurrentRadio, selectData } from 'src/features/Radios/redux/slice';
+import {
+  changeIsLoadingRadioStation,
+  changeIsPause,
+  choseCurrentRadio,
+  selectData,
+} from 'src/features/Radios/redux/slice';
 
 type Props = {
   url: string;
@@ -29,6 +34,8 @@ const RadioButton: FC<Props> = ({ url, name, radio }) => {
       }
     } else {
       dispatch(choseCurrentRadio(null));
+      dispatch(changeIsLoadingRadioStation('idle'));
+      dispatch(changeIsPause(false));
     }
   };
 

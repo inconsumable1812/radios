@@ -22,7 +22,7 @@ type State = {
   chosenCountry: CountryNames | null;
   isPlay: boolean;
   isPause: boolean;
-  isLoadingRadioStations: 'loading' | 'play' | 'pause';
+  isLoadingRadioStations: 'loading' | 'play' | 'pause' | 'idle';
   volume: string;
 };
 
