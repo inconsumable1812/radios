@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { defaults } from 'lodash';
 
 import { initialState } from './initialState';
@@ -6,6 +6,7 @@ import { selectData } from './selectors';
 import { getCountries } from './thunks/getCountries';
 import { getGenres } from './thunks/getGenres';
 import { getRadioStations } from './thunks/getRadioStations';
+import { State } from './types';
 import { filterRadio } from './utils/filterRadio';
 
 const slice = createSlice({
@@ -39,7 +40,13 @@ const slice = createSlice({
     changeIsPlay(state, action) {
       state.isPlay = action.payload;
     },
-    changeIsLoadingRadioStation(state, action) {
+    changeIsPause(state, action) {
+      state.isPause = action.payload;
+    },
+    changeIsLoadingRadioStation(
+      state,
+      action: PayloadAction<State['isLoadingRadioStations']>
+    ) {
       state.isLoadingRadioStations = action.payload;
     },
     choseGenre(state, action) {
@@ -129,6 +136,7 @@ const {
   changeVolume,
   changeBestRadioStations,
   changeIsShowBestRadio,
+  changeIsPause,
 } = slice.actions;
 
 const { reducer } = slice;
@@ -149,4 +157,5 @@ export {
   changeVolume,
   changeBestRadioStations,
   changeIsShowBestRadio,
+  changeIsPause,
 };

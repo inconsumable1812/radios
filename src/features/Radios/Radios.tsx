@@ -10,6 +10,7 @@ import {
   getCountries,
   changeIsLoadingRadioStation,
   changeIsPlay,
+  changeIsPause,
 } from './redux/slice';
 import { Header } from './view/components/Header/Header';
 import { Container } from './view/Container/Container';
@@ -18,8 +19,15 @@ type Props = {};
 
 const Radios: FC<Props> = ({}) => {
   const dispatch = useAppDispatch();
-  const { status, error, isPlay, chosenRadio, isLoadingRadioStations, volume } =
-    useAppSelector(selectData);
+  const {
+    status,
+    error,
+    isPause,
+    isPlay,
+    chosenRadio,
+    isLoadingRadioStations,
+    volume,
+  } = useAppSelector(selectData);
   const audioContainer = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
@@ -29,23 +37,36 @@ const Radios: FC<Props> = ({}) => {
   }, [dispatch]);
 
   useEffect(() => {
+    if (audioContainer.current === null) return;
     if (chosenRadio !== null) {
-      if (audioContainer.current !== null) {
-        audioContainer.current.play().then(() => {
-          dispatch(changeIsPlay(true));
-          dispatch(changeIsLoadingRadioStation(false));
-        });
-        audioContainer.current.volume = +volume / 100;
-        dispatch(changeIsLoadingRadioStation(true));
-      }
+      audioContainer.current.play().then(() => {
+        dispatch(changeIsPlay(true));
+        dispatch(changeIsLoadingRadioStation('play'));
+        dispatch(changeIsPause(false));
+      });
+      audioContainer.current.volume = +volume / 100;
+      dispatch(changeIsLoadingRadioStation('loading'));
     } else {
-      dispatch(changeIsLoadingRadioStation(false));
+      dispatch(changeIsLoadingRadioStation('pause'));
       dispatch(changeIsPlay(false));
-      if (audioContainer.current !== null) {
-        audioContainer.current.pause();
-      }
+      dispatch(changeIsPause(false));
+      audioContainer.current.pause();
     }
   }, [chosenRadio, dispatch]);
+
+  useEffect(() => {
+    if (audioContainer.current === null) return;
+    if (isPause) {
+      audioContainer.current.pause();
+      return;
+    }
+
+    audioContainer.current.play().then(() => {
+      dispatch(changeIsLoadingRadioStation('play'));
+    });
+    dispatch(changeIsLoadingRadioStation('loading'));
+    audioContainer.current.volume = +volume / 100;
+  }, [isPause]);
 
   if (audioContainer.current !== null) {
     audioContainer.current.volume = +volume / 100;
@@ -63,16 +84,21 @@ const Radios: FC<Props> = ({}) => {
         <>
           <Header></Header>
           <main className="mx-2.5 md:mx-6 xl:mx-8.5">
-            {chosenRadio !== null && (
+            {chosenRadio !== null && !isPause && (
               <audio ref={audioContainer} src={chosenRadio.src}></audio>
             )}
             <div className="my-2 min-h-[16px] self-end">
-              {isLoadingRadioStations && (
+              {isLoadingRadioStations === 'loading' && (
                 <p className="text-right text-currentRadioCaption md:text-xs">
                   Подождите, радио {chosenRadio?.name} загружается...
                 </p>
               )}
-              {isPlay && !isLoadingRadioStations && (
+              {isLoadingRadioStations === 'pause' && (
+                <p className="text-right text-currentRadioCaption md:text-xs">
+                  Радио {chosenRadio?.name} на паузе
+                </p>
+              )}
+              {isPlay && isLoadingRadioStations === 'play' && (
                 <p className="text-right text-currentRadioCaption md:text-xs">
                   Вы слушаете {chosenRadio?.name}
                 </p>

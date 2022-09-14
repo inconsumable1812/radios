@@ -21,7 +21,8 @@ type State = {
   chosenGenre: GenreNames | null;
   chosenCountry: CountryNames | null;
   isPlay: boolean;
-  isLoadingRadioStations: boolean;
+  isPause: boolean;
+  isLoadingRadioStations: 'loading' | 'play' | 'pause';
   volume: string;
 };
 

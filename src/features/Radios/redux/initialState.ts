@@ -14,8 +14,9 @@ const initialState: State = {
   chosenGenre: null,
   chosenCountry: null,
   isPlay: false,
+  isPause: false,
   isLoadingRadioStations: false,
-  volume: '60',
+  volume: '70',
 };
 
 export { initialState };

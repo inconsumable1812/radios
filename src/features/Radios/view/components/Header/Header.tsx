@@ -10,8 +10,14 @@ import {
   SkipIcon,
   UnionIcon,
   ButtonIcon,
+  PauseIcon,
 } from 'src/components';
-import { changeSearchValue, selectData } from 'src/features/Radios/redux/slice';
+import {
+  changeIsLoadingRadioStation,
+  changeIsPause,
+  changeSearchValue,
+  selectData,
+} from 'src/features/Radios/redux/slice';
 import { Input } from '../Input/Input';
 import { Slider } from '../Slider/Slider';
 
@@ -22,7 +28,7 @@ const Header: FC<Props> = ({}) => {
   const [isDesktop, setIsDesktop] = useState(false);
 
   const dispatch = useAppDispatch();
-  const { searchValue, isPlay } = useAppSelector(selectData);
+  const { searchValue, isPlay, isPause } = useAppSelector(selectData);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -50,6 +56,13 @@ const Header: FC<Props> = ({}) => {
     setIsSearching(true);
   };
 
+  const handlePauseClick = () => {
+    dispatch(changeIsPause(!isPause));
+    if (!isPause) {
+      dispatch(changeIsLoadingRadioStation('pause'));
+    }
+  };
+
   switch (isDesktop) {
     case true:
       return (
@@ -59,6 +72,9 @@ const Header: FC<Props> = ({}) => {
             {isPlay && (
               <div className="flex items-center gap-x-5">
                 <Slider></Slider>
+                <div className="h-11 w-11" onClick={handlePauseClick}>
+                  {isPause ? <PauseIcon></PauseIcon> : <PlayIcon></PlayIcon>}
+                </div>
               </div>
             )}
             <div className="flex items-center gap-x-2">
@@ -78,15 +94,11 @@ const Header: FC<Props> = ({}) => {
         <header className="flex items-center mx-5 min-h-[55px]">
           <div className="flex items-center justify-between w-full">
             <BurgerIcon></BurgerIcon>
-            {isPlay && (
-              <>
-                <LikeIcon></LikeIcon>
-                <PlayIcon></PlayIcon>
-                <DislikeIcon></DislikeIcon>
-                <SkipIcon></SkipIcon>
-                <UnionIcon></UnionIcon>
-              </>
-            )}
+            <div onClick={handlePauseClick}>
+              {isPlay && (
+                <>{isPause ? <PauseIcon></PauseIcon> : <PlayIcon></PlayIcon>}</>
+              )}
+            </div>
             {isSearching && <Input></Input>}
             {isSearching ? (
               <CancelIcon onClick={handleCancelClick}></CancelIcon>
